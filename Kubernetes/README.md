@@ -152,6 +152,7 @@ spec:
 <img width="2726" height="1374" alt="image" src="https://github.com/user-attachments/assets/5e8f660e-2bc7-4680-8a6a-308a3f9f1250" />
 
 теперь опять к апдейту. я решила, что все страдания из-за злобного смеха, поэтому теперь фразу сделаю помягче и рассудительнее
+
 ура победа!
 <img width="2374" height="1692" alt="image" src="https://github.com/user-attachments/assets/9ffcf520-4687-49b3-ada7-f1e69e531f4b" />
 а нужно было в service всего лишь поменять селектор на `{{- include "my-app-chart.selectorLabels" . | nindent 4 }}`, такой же, как в deployment, т.к. он создает метки автоматом, а так получалось, что метка фиксированная
