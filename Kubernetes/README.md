@@ -70,4 +70,46 @@ spec:
 <img width="2160" height="666" alt="image" src="https://github.com/user-attachments/assets/f000d7a2-bb01-4bd1-ad34-0ecd69d63253" />
 Приложение действительно заработало!
 
-## Часть 2
+## Часть 2 - Helm
+Сначала установила Helm
+<img width="2026" height="612" alt="image" src="https://github.com/user-attachments/assets/16b33e56-7aee-4f92-bfc3-4a28df585fc1" />
+изменила в файлах шаблонов следующие строки
+
+values.yaml
+```
+image:
+  repository: my-web-app
+  tag: v2
+  pullPolicy: Never
+
+service:
+  type: NodePort
+  port: 80
+```
+deployment.yaml
+```
+containers:
+  - name: web-container
+    image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+    imagePullPolicy: {{ .Values.image.pullPolicy }}
+    ports:
+      - containerPort: 80
+```
+service.yaml
+```
+spec:
+  type: {{ .Values.service.type }}
+  selector:
+    app: my-web-app
+  ports:
+    - port: {{ .Values.service.port }}
+      targetPort: 80
+```
+Пробовала также добавлять `nodePort`, однако назначила им тот же порт, что и предыдущей сборке, из-за чего возникли проблемы. Потом я просто убрала этот аргумент, т.к. kubernetes может и сам выдавать порты, что мы и видим дальше.
+
+и в итоге запустила helm
+<img width="2550" height="728" alt="image" src="https://github.com/user-attachments/assets/107231ab-4def-4f4a-ac0a-09b361ee88be" />
+
+И проверила. Остались сервисы и поды из части 1, но те, над которыми работала в части 2 работают и открываются по своим портам
+<img width="2478" height="1500" alt="image" src="https://github.com/user-attachments/assets/073f7dc3-f09e-4bc1-b558-a50502fb5f1c" />
+
