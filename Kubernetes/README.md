@@ -113,3 +113,8 @@ spec:
 И проверила. Остались сервисы и поды из части 1, но те, над которыми работала в части 2 работают и открываются по своим портам
 <img width="2478" height="1500" alt="image" src="https://github.com/user-attachments/assets/073f7dc3-f09e-4bc1-b558-a50502fb5f1c" />
 
+Далее изменила приложение и сделала апгрейд релиза
+<img width="2650" height="912" alt="image" src="https://github.com/user-attachments/assets/c9cb899f-ad7e-42c2-b9e6-21bb7c2e5d61" />
+изменила тэг в values.yaml
+<img width="1012" height="332" alt="image" src="https://github.com/user-attachments/assets/02629f44-bb9e-4d6e-9d35-ddcc13eb5bf9" />
+
